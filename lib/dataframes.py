@@ -37,7 +37,7 @@ def get_raw_files_df(spark, file_conf):
     party_schema = StructType(
         [StructField("load_date", DateType()),
             StructField("account_id", LongType()),
-            StructField("party_id", IntegerType()),
+            StructField("party_id", LongType()),
             StructField("relation_type", StringType()),
             StructField("relation_start_date", TimestampType())])
 
