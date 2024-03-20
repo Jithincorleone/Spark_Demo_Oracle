@@ -15,16 +15,11 @@ if __name__ == "__main__":
 
     acc_df, parties_df, party_add_df = get_raw_files_df(spark, file_conf)
 
-#    df.show()
-    acc_df.show()
-    parties_df.show()
-    party_add_df.show()
-
-    acc_df.printSchema()
-
     write_db_table(acc_df, db_conf, db_conf["acc_table"])
     write_db_table(parties_df, db_conf, db_conf["party_table"])
     write_db_table(party_add_df, db_conf, db_conf["address_table"])
+#    join_df(acc_df, parties_df, party_add_df, db_conf, db_conf["join_table"])
+    create_spark_tables(spark, acc_df, parties_df, party_add_df, db_conf, db_conf["join_table"])
 
     spark.stop()
     logger.info("spark stopped")
